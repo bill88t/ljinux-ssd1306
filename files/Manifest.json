@@ -1,0 +1,11 @@
+{
+    "JPKG_minimum_version": 0,
+    "package_name": "package",
+    "version": [0, 0, 0],
+    "dependencies": [],
+    "conflicts": [],
+    "install": "installer.py",
+    "remove": "uninstaller.py",
+    "update": "updater.py",
+    "restart_required": false
+} 
