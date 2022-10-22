@@ -1,3 +1,9 @@
 [submodule "submodules/jz"]
 	path = submodules/jz
 	url = https://github.com/bill88t/jz
+[submodule "submodules/Adafruit_CircuitPython_framebuf"]
+	path = submodules/Adafruit_CircuitPython_framebuf
+	url = https://github.com/adafruit/Adafruit_CircuitPython_framebuf
+[submodule "submodules/Adafruit_CircuitPython_SSD1306"]
+	path = submodules/Adafruit_CircuitPython_SSD1306
+	url = https://github.com/adafruit/Adafruit_CircuitPython_SSD1306

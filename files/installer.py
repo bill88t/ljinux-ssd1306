@@ -1,6 +1,13 @@
-print("""
-    This script is run during the first install of the package.
-    
-    You should copy the files you want in the system from here.
-    You should NOT bother with the manifest or the uninstall files from here.
-""")
+ljinux.api.var("argj", f"cp ssd1306.mpy &/lib/drivers/ssd1306.mpy")
+ljinux.based.command.fpexecc([None, "/bin/cp.py"])
+ljinux.api.var("argj", f"cp font5x8.bin &/font5x8.bin")
+ljinux.based.command.fpexecc([None, "/bin/cp.py"])
+
+for filee in [
+    "adafruit_framebuf.mpy",
+    "adafruit_ssd1306.mpy",
+]:
+    ljinux.api.var("argj", f"cp {filee} &/lib/{filee}")
+    ljinux.based.command.fpexecc([None, "/bin/cp.py"])
+
+ljinux.api.var("return", "0")

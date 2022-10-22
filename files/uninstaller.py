@@ -1,7 +1,7 @@
-print("""
-    This script is run when a users uninstalls the package.
-    
-    It will not run during an update.
-    Here you should purge all the files you installed with your install script.
-    Do not nuke the system.
-""")
+ljinux.api.var(
+    "argj",
+    "a &/lib/drivers/ssd1306.mpy &/font5x8.bin &/lib/adafruit_framebuf.mpy &/lib/adafruit_ssd1306.mpy",
+)
+ljinux.based.command.fpexecc([None, "/bin/rm.py"])
+
+ljinux.api.var("return", "0")
