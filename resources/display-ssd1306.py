@@ -15,6 +15,8 @@ class ssd1306:
         self.display_size = [128, 64]
 
     def setup(self, scl, sda, x=None, y=None):
+        # Initialises the display, defaults to 128x64 resolution if x&y unset
+        
         if x is not None:
             self.display_size[0] = x
         if y is not None:
@@ -33,6 +35,8 @@ class ssd1306:
         raise NotImplementedError
 
     def _fetch_points(self, xs, ys, xe, ye, expand=False):
+        # Draws a virtual line and returns the set of points
+        
         pointarr = []
         dx, dy = abs(xs - xe), abs(ys - ye)
         cx, cy = xs, ys
@@ -67,6 +71,10 @@ class ssd1306:
         return pointarr
 
     def line(self, xs, ys, xe, ye, col=1, sync=True, expand=False):
+        """
+            Draw a line between [xs, ys] and [xe, ye]
+            "expand" keyword makes the line fill both pixels in case of float
+        """
         dx, dy = abs(xs - xe), abs(ys - ye)
         cx, cy = xs, ys
         sx = -1 if xs > xe else 1
@@ -101,9 +109,14 @@ class ssd1306:
         del dx, dy, cx, cy, sx, sy, sync, expand
 
     def frame(self):
+        # Refresh display
+        
         self._display.show()
 
     def circle(self, xc, yc, r, col=1, fill=False, sync=True):
+        """
+            Draw a circle with the center [xc, yc] and radius r
+        """
         f = 1 - r
         ddf_x = 1
         ddf_y = -2 * r
@@ -148,36 +161,48 @@ class ssd1306:
         del xc, yc, r, col, fill, sync, f, ddf_x, ddf_y, x, y, points
 
     def pixel(self, x, y, col=1, sync=True):
+        # Draw a single pixel on [x, y]
+        
         self._display.pixel(x, y, col)
         if sync:
             self.frame()
         del x, y, col, sync
 
     def triangle(self, x1, y1, x2, y2, x3, y3, col=1, fill=False, sync=True):
-        if not fill:
-            self.line(x1, y1, x2, y2, col, sync=False)
-            self.line(x1, y1, x3, y3, col, sync=False)
-            self.line(x2, y2, x3, y3, col, sync=False)
-        else:
+        # Draw a triangle between points [x1, y1], [x2, y2], [x3, y3]
+        
+        self.line(x1, y1, x2, y2, col, sync=False)
+        self.line(x1, y1, x3, y3, col, sync=False)
+        self.line(x2, y2, x3, y3, col, sync=False)
+        
+        if fill:
             vl = self._fetch_points(x1, y1, x2, y2)  # virtual line
             for point in vl:
                 self.line(x3, y3, point[0], point[1], col, sync=False, expand=True)
+                del point
             del vl
         
         if sync:
             self.frame()
+        del x1, y1, x2, y2, x3, y3, col, fill, sync
 
     def fill(self, col=1, sync=True):
+        # fill the whole display
+        
         self._display.fill(col)
+        
         if sync:
             self.frame()
+        
         del sync, col
 
-    def pixel(self, x, y, col=1, sync=True):
-        self._display.pixel(x, y, col)
+    def text(self, x, y, text, col=1, sync=True):
+        # Write some text, starting from point [x, y]
+        
+        self._display.text(text, x, y, col, font_name="/LjinuxRoot/etc/font5x8.bin")
         if sync:
             self.frame()
-        del col, sync, x, y
+        del x, y, text, col, sync
 
     def enter(self, args=None):
         print("This kernel module provides no cli interface.\nPlease use farland to interface with it instead.")
