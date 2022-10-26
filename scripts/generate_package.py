@@ -12,6 +12,8 @@ chdir("files")
 execstr = ""
 for filee in listdir():
     execstr += f", '{filee}'"
-execstr = "compress(" + execstr[2:] + ", '../ssd1306.jpk')"  # fancy bullshittery
+execstr = (
+    "compress(" + execstr[2:] + ", '../farland-ssd1306.jpk')"
+)  # fancy bullshittery
 exec(execstr)
 print("Done.")

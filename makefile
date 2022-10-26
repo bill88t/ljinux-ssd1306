@@ -13,7 +13,7 @@ package: modules
 	@python3 -u scripts/make_lib.py
 	@python3 -u scripts/generate_package.py
 clean:
-	@if [ -e "ssd1306.jpk" ]; then rm ssd1306.jpk; fi
+	@if [ -e "farland-ssd1306.jpk" ]; then rm farland-ssd1306.jpk; fi
 	@if [ -e "./files/adafruit_ssd1306.mpy" ]; then rm ./files/adafruit_ssd1306.mpy; fi
 	@if [ -e "./files/adafruit_framebuf.mpy" ]; then rm ./files/adafruit_framebuf.mpy; fi
 	@if [ -e "./files/ssd1306.mpy" ]; then rm ./files/ssd1306.mpy; fi
