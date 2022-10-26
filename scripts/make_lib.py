@@ -9,16 +9,7 @@ def errexit():
 
 mpyn = "./scripts/mpy-cross-" + uname().machine
 
-print(f"Compiling adafruit_ssd1306 and adafruit_framebuf..\nUsing mpycross: {mpyn}\n")
-
-a = system(
-    mpyn
-    + " ./submodules/Adafruit_CircuitPython_framebuf/adafruit_framebuf.py -s adafruit_framebuf -v -O4 -o ./files/adafruit_framebuf.mpy"
-)
-print("adafruit_framebuf.py -> adafruit_framebuf.mpy")
-
-if a != 0:
-    errexit()
+print(f"Compiling adafruit_ssd1306..\nUsing mpycross: {mpyn}\n")
 
 a = system(
     mpyn
