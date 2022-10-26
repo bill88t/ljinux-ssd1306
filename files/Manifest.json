@@ -2,7 +2,7 @@
     "JPKG_minimum_version": 0,
     "package_name": "farland-ssd1306",
     "version": [1, 0, 0],
-    "dependencies": [],
+    "dependencies": ["farland"],
     "conflicts": [],
     "install": "installer.py",
     "remove": "uninstaller.py",

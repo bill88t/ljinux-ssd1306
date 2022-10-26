@@ -179,5 +179,5 @@ class ssd1306:
             self.frame()
         del col, sync, x, y
 
-    def enter(self):
-        pass
+    def enter(self, args=None):
+        print("This kernel module provides no cli interface.\nPlease use farland to interface with it instead.")
