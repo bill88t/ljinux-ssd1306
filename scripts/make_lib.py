@@ -24,9 +24,9 @@ print("Compiling ljinux-ssd1306 driver..\n")
 
 a = system(
     mpyn
-    + " ./resources/display-ssd1306.py -s ljinux-ssd1306 -v -O4 -o ./files/ssd1306.mpy"
+    + " ./resources/farland-ssd1306.py -s farland-ssd1306 -v -O4 -o ./files/ssd1306.mpy"
 )
-print("display-ssd1306.py -> ssd1306.mpy")
+print("farland-ssd1306.py -> ssd1306.mpy")
 
 if a != 0:
     errexit()
